@@ -1,0 +1,8 @@
+{
+  "name": "item-viewer-backend",
+  "version": "1.0.0",
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "prettier": "^2.8.7"
+  }
+}

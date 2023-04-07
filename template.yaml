@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  ProxyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub ${AWS::StackName}-proxy
+      CodeUri: lambdas/proxy
+      Handler: index.handler
+      Runtime: nodejs16.x
+      Timeout: 600
+      # Configure function URL
+      FunctionUrlConfig:
+        AuthType: NONE
+        Cors:
+          AllowOrigins:
+            - "*"
+          AllowMethods:
+            - "POST"
+          AllowHeaders:
+            - "content-type"
+            - "x-function-name"

@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-function-name": "listMemoriesByItemId",
+    "content-type": "application/json"
+  },
+  "body": "{\"itemId\":\"f41e3d5f-ccd7-4730-8070-6ccdad45a1f6\"}"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "proxy:index.handler (nodejs16.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "${workspaceFolder}/lambdas/proxy",
+        "lambdaHandler": "index.handler"
+      },
+      "lambda": {
+        "runtime": "nodejs16.x",
+        "payload": {
+          "path": "${workspaceFolder}/testevents/getItem.json"
+        },
+        "environmentVariables": {
+          "API_KEY": "YOUR_API_KEY",
+          "CONTRACT_ID": "YOUR_CONTRACT_ID"
+        }
+      }
+    }
+  ]
+}

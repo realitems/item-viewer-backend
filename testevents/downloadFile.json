@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-function-name": "downloadFile",
+    "content-type": "application/json"
+  },
+  "body": "{\"assetId\":\"8134596b-66d1-4362-bec3-366cf9572117\"}"
+}

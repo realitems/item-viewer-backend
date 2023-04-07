@@ -1,0 +1,9 @@
+version=0.1
+
+[default.deploy.parameters]
+stack_name = "item-viewer-backend"
+s3_bucket = "YOUR_S3_BUCKET"
+s3_prefix = "item-viewer-backend"
+image_repositories = []
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
