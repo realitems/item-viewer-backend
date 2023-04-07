@@ -1,4 +1,6 @@
 const axios = require("axios");
+
+// Access environment variables
 const env = process.env;
 
 // Get API key and contract ID from environment variables
@@ -6,6 +8,7 @@ const API_KEY = env.API_KEY;
 const CONTRACT_ID = env.CONTRACT_ID;
 
 exports.handler = async (event) => {
+  // Log received event data
   console.info("Event:", JSON.stringify(event));
 
   // Check that the API key and contract ID are set
@@ -22,6 +25,7 @@ exports.handler = async (event) => {
   const functionName = event.headers["x-function-name"];
   const eventData = event.body ? JSON.parse(event.body) : {};
 
+  // Log the requested function name
   console.info("Function name:", functionName);
 
   // Call the selected API function
@@ -42,7 +46,9 @@ exports.handler = async (event) => {
   }
 };
 
+// Function to send a request to the Real Items API
 const sendRequest = async (data, endpoint, operation) => {
+  // Configure the request
   const config = {
     method: "post",
     url: `https://api.realitems.io/${endpoint}`,
@@ -53,6 +59,7 @@ const sendRequest = async (data, endpoint, operation) => {
     data,
   };
 
+  // Send the request and handle the response
   try {
     const response = await axios(config);
     const responseData = response.data.data[operation];
@@ -75,6 +82,7 @@ const sendRequest = async (data, endpoint, operation) => {
   }
 };
 
+// Response for missing required variables
 const missingVariablesResponse = {
   statusCode: 400,
   body: JSON.stringify({
@@ -87,6 +95,7 @@ const getItem = async (eventData) => {
   // Check if required variables are present
   if (!eventData.itemId) return missingVariablesResponse;
 
+  // Prepare the query and variables
   const data = JSON.stringify({
     query: `query getItem ($itemId: String!) {
       getItem (itemId: $itemId) {
@@ -111,6 +120,7 @@ const getItem = async (eventData) => {
     variables: { itemId: eventData.itemId },
   });
 
+  // Send the request and return the response
   return await sendRequest(data, "items", "getItem");
 };
 
@@ -119,6 +129,7 @@ const listMemoriesByItemId = async (eventData) => {
   // Check if required variables are present
   if (!eventData.itemId) return missingVariablesResponse;
 
+  // Prepare the query and variables
   const data = JSON.stringify({
     query: `query listMemoriesByItemId ($itemId: String!) {
       listMemoriesByItemId (itemId: $itemId) {
@@ -138,6 +149,7 @@ const listMemoriesByItemId = async (eventData) => {
     variables: { itemId: eventData.itemId },
   });
 
+  // Send the request and return the response
   return await sendRequest(data, "memories", "listMemoriesByItemId");
 };
 
@@ -146,6 +158,7 @@ const downloadFile = async (eventData) => {
   // Check if required variables are present
   if (!eventData.assetId) return missingVariablesResponse;
 
+  // Configure the request
   const config = {
     method: "post",
     url: "https://api.realitems.io/file/download",
@@ -156,6 +169,7 @@ const downloadFile = async (eventData) => {
     },
   };
 
+  // Send the request and handle the response
   try {
     const response = await axios(config);
     const responseData = {
