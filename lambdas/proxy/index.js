@@ -104,6 +104,8 @@ const getItem = async (eventData) => {
               batchId
               metadata
               metadataHash
+              blockchainName
+              blockchainNetwork
               contractAddress
               mintTransaction {
                   status
