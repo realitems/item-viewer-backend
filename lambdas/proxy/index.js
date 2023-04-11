@@ -21,7 +21,7 @@ exports.handler = async (event) => {
     };
   }
 
-  // Get request data from the front-end
+  // Get request data from the frontend
   const functionName = event.headers["x-function-name"];
   const eventData = event.body ? JSON.parse(event.body) : {};
 

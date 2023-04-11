@@ -1,6 +1,9 @@
-# Item Viewer back-end
+# Item Viewer backend
 
-This is the back-end for the Item Viewer demo application. It is a Lambda function that takes requests from the front-end, calls the Real Item API using an API key, and returns the results to the front-end.
+This is the backend for the Item Viewer demo application. It is a Lambda function that takes requests from the frontend, calls the Real Item API using an API key, and returns the results to the frontend.
+
+You can check out the frontend part here:  
+[https://github.com/realitems/item-viewer-frontend](https://github.com/realitems/item-viewer-frontend)
 
 ## Usage
 
