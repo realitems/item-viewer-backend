@@ -7,7 +7,7 @@ You can check out the frontend part here:
 
 ## Usage
 
-This project was built using AWS SAM. If you don't use SAM, or you just want to see the code, you can find it in [here](https://github.com/realitems/item-viewer-backend/blob/dev/lambdas/proxy/index.js) `(/lambdas/proxy/index.js)`.
+This project was built using AWS SAM. If you don't use SAM, or you just want to see the code, you can find it in `/lambdas/proxy/index.js`.
 
 #### AWS SAM
 
