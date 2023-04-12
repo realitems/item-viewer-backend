@@ -137,9 +137,15 @@ const listMemoriesByItemId = async (eventData) => {
       listMemoriesByItemId (itemId: $itemId) {
           body {
               memoryId
+              batchId
               metadata
+              metadataHash
+              blockchainName
+              blockchainNetwork
+              contractAddress
               mintTransaction {
                   status
+                  hash
               }
           }
           status {
